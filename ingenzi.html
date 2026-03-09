@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INGENZI-Ledger your Business Heartbeat</title>
+    <link rel="icon" type="image/png" href="icon2.png">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin-left: 1px;
+        }
+        body {
+           background-color: #0f1711;
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 5px;
+            height: 50px;
+            width: 99.59%;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            margin-left: -7px;
+            background-color: rgb(26, 52, 45);
+            color: rgb(210, 221, 216);
+        }
+        /* Right side container for date + profile icon */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .ring {
+            height: 150px;
+            width: 150px;
+            border: 1px solid black;
+            border-radius: 100px;
+            margin-left: 80px;
+            display: center;
+            background: radial-gradient(closest-side, rgba(26, 52, 45) 85%, transparent 0%),
+                        conic-gradient(rgba(46, 204, 113) 0%, rgba(46, 204, 113) var(--score, 0%), rgba(40, 60, 55) 0%);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .zz {
+            text-align: center;
+            margin-top: 60px;
+            color: rgb(210, 221, 216);
+        }
+        #kinbtn, #engbtn {
+            margin-left: 60px;
+            width: 70px;
+            height: 30px;
+            border-radius: 20px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #kinbtn {
+            background-color: rgb(45, 65, 55);
+            color: white;
+        }
+        #engbtn {
+            background-color: rgb(184, 212, 192); 
+            color: white;
+            margin-left: 0;
+        }
+        .score {
+            padding: 5px;
+            height: 267px;
+            width: 314px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            background-color: rgb(26, 52, 45);
+        }
+        .score h2 {
+            text-align: center;
+            color: rgb(210, 221, 216);
+        }
+        .score h5 {
+            margin-top: 25px;
+            text-align: center;
+            color: rgb(210, 221, 216);
+        }
+        .smallbox {
+            display: flex;
+            align-items: center;      
+            gap: 15px;            
+            text-align: center;
+            font-weight: bold;
+        }
+        .small1, .small2 {
+            padding: 5px;
+            height: 115px;
+            width: 145px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            background-color: rgb(26, 52, 45);
+            color: rgb(210, 221, 216);
+        }
+        .atte {
+            padding: 5px;
+            height: 93.5px;
+            width: 314px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            background-color: rgb(26, 52, 45);
+        }
+        .daily {
+            margin-top: -540px;
+            padding: 5px;
+            height: 25px;
+            width: 908px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            margin-left: 340px;
+            font-weight: bold;
+            background-color: rgb(26, 52, 45);
+            color: rgb(210, 221, 216);
+        }
+        /* ===== TABLE STYLES – NO BORDERS, FLEX LAYOUT ===== */
+        .table {
+            padding: 15px;
+            width: 890px;
+            min-height: 299px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            margin-left: 340px;
+            background-color: rgb(26, 52, 45);
+            color: rgb(210, 221, 216);
+            
+            display: flex;
+            flex-direction: column;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 15px;
+            flex-shrink: 0;
+        }
+        th, td {
+            border: none;
+            padding: 10px 8px;
+            text-align: left;
+        }
+        th {
+            background-color: transparent;
+            color: rgb(210, 221, 216);
+            font-weight: bold;
+        }
+        td {
+            background-color: #1f3f31;
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #3b5e4c;
+            padding: 6px;
+            background-color: #2a4a3a;
+            color: rgb(210, 221, 216);
+            border-radius: 4px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4cae7a;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .amount-field {
+            background-color: #2a4a3a;
+            font-weight: bold;
+            color: rgb(210, 221, 216);
+        }
+        .error {
+            color: #ff6666;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+        /* All buttons look identical */
+        .table button {
+            font-weight: bold;
+            width: 90px;
+            height: 35px;
+            border-radius: 30px;
+            border: 1px solid #4e7b64;
+            cursor: pointer;
+            transition: 0.2s;
+            background-color: #3a5e4e;
+            color: rgb(210, 221, 216);
+        }
+        .table button:hover {
+            background-color: #4e7b64;
+        }
+
+        /* Colour classes for rows */
+        .red-text-1,
+        .red-text-1 input,
+        .red-text-1 span {
+            color: #ff9999 !important;
+        }
+        .red-text-2,
+        .red-text-2 input,
+        .red-text-2 span {
+            color: #ff6666 !important;
+            font-weight: bold;
+        }
+        .red-text-1 .amount-field,
+        .red-text-2 .amount-field {
+            background-color: #2a4a3a;
+        }
+        .locked-row td {
+            text-align: right;
+        }
+        .locked-row td:first-child {
+            text-align: left;
+        }
+        .bigbox {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .monthly, .profit {
+            padding: 5px;
+            height: 150px;
+            width: 485.5px;
+            box-shadow: 0 4px 10px rgb(15, 39, 33);
+            border-radius: 3px;
+            background-color: rgb(26, 52, 45);
+            color: rgb(210, 221, 216);
+        }
+        .monthly { margin-left: 340px; }
+        .profit { margin-left: 15px; }
+    </style>
+</head>
+<body>
+    <div class="ingenzi">
+        <div class="header">
+            <h2>INGENZI Ledger</h2>
+            <button id="kinbtn" onclick="changeLanguage('kin')">KIN</button>
+            <button id="engbtn" onclick="changeLanguage('eng')">ENG</button>
+            <!-- Right side container with date and profile icon -->
+            <div class="header-right">
+                <p id="date"></p>
+                <i class="fas fa-user-circle" style="font-size: 1.4rem;"><a href=""></a></i>
+            </div>
+        </div>
+        <br>
+        <div class="hor">
+            <div class="score">
+                <h2>INGENZI Score</h2>
+                <div class="ring" style="--score: 50%">
+                    <h3 class="zz">50%</h3>
+                </div>
+                <h5>❌ BANKABLE</h5>
+            </div><br>
+            <div class="smallbox">
+                <div class="small1">INCOME</div>
+                <div class="small2">EXPENSE</div>
+            </div><br>
+            <div class="atte"></div>
+            <div class="gap">
+                <div class="daily">Daily Sales</div><br>
+                
+                <!-- ===== DYNAMIC TABLE SECTION ===== -->
+                <div class="table">
+                    <table id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows will be added here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="button-container">
+                        <button id="add-dept-btn">Dept</button>
+                        <button id="add-credit-btn">Credit</button>
+                        <button id="add-income-btn">Income</button>
+                    </div>
+                    <div id="error-message" class="error"></div>
+                </div><br>
+                
+                <div class="bigbox">
+                    <div class="monthly">Monthly Sale Trend</div>
+                    <div class="profit">Profit Over Time</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ----- Language toggle with full date translation -----
+        const kinBtn = document.getElementById('kinbtn');
+        const engBtn = document.getElementById('engbtn');
+        const LIGHT_BG = 'rgb(184, 212, 192)';
+        const DARK_BG = 'rgb(45, 65, 55)';
+        const LIGHT_TEXT = 'black';
+        const DARK_TEXT = 'white';
+
+        const translations = {
+            eng: {
+                title: "INGENZI Ledger",
+                scoreTitle: "INGENZI Score",
+                dailySales: "Daily Sales",
+                income: "INCOME",
+                expense: "EXPENSE",
+                locale: "en-US"
+            },
+            kin: {
+                title: "INGENZI Ledger",
+                scoreTitle: "Amanota ya INGENZI",
+                dailySales: "Icuruzwa ry'Umunsi",
+                income: "INJIRA",
+                expense: "SOHOKA",
+                locale: "rw-RW"
+            }
+        };
+        let currentLang = "eng";
+
+        function setButtonColors(activeLang) {
+            if (activeLang === 'kin') {
+                kinBtn.style.backgroundColor = LIGHT_BG;
+                kinBtn.style.color = LIGHT_TEXT;
+                engBtn.style.backgroundColor = DARK_BG;
+                engBtn.style.color = DARK_TEXT;
+            } else {
+                engBtn.style.backgroundColor = LIGHT_BG;
+                engBtn.style.color = LIGHT_TEXT;
+                kinBtn.style.backgroundColor = DARK_BG;
+                kinBtn.style.color = DARK_TEXT;
+            }
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+
+            // Update all text elements
+            document.querySelector('.header h2').innerText = translations[lang].title;
+            document.querySelector('.score h2').innerText = translations[lang].scoreTitle;
+            document.querySelector('.daily').innerText = translations[lang].dailySales;
+            document.querySelector('.small1').innerText = translations[lang].income;
+            document.querySelector('.small2').innerText = translations[lang].expense;
+
+            setButtonColors(lang);
+            updateDateTime(); // Immediately refresh date with new locale
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const locale = translations[currentLang].locale;
+
+            const datePart = now.toLocaleDateString(locale, {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            });
+
+            const timePart = now.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            document.getElementById("date").innerHTML = datePart + "  |  " + timePart;
+        }
+
+        // Start with English and set up clock
+        changeLanguage('eng');
+        setInterval(updateDateTime, 1000);
+
+        // ----- DYNAMIC TABLE FUNCTIONALITY (unchanged) -----
+        const tbody = document.getElementById('table-body');
+        const errorDiv = document.getElementById('error-message');
+
+        function calculateAmount(quantityInput, priceInput, amountInput) {
+            const q = parseFloat(quantityInput.value) || 0;
+            const p = parseFloat(priceInput.value) || 0;
+            amountInput.value = (q * p).toFixed(2);
+        }
+
+        function addCalculationListeners(row) {
+            const qInput = row.querySelector('td:nth-child(2) input');
+            const pInput = row.querySelector('td:nth-child(3) input');
+            const aInput = row.querySelector('td:nth-child(4) input');
+            
+            aInput.readOnly = true;
+            aInput.classList.add('amount-field');
+
+            qInput.addEventListener('input', () => calculateAmount(qInput, pInput, aInput));
+            pInput.addEventListener('input', () => calculateAmount(qInput, pInput, aInput));
+        }
+
+        function lockRow(row) {
+            const cells = row.querySelectorAll('td');
+            cells.forEach((cell, idx) => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    const value = input.value.trim();
+                    const span = document.createElement('span');
+                    if (idx === 1 || idx === 2 || idx === 3) {
+                        const num = parseFloat(value) || 0;
+                        span.textContent = idx === 1 ? num.toString() : num.toFixed(2);
+                    } else {
+                        span.textContent = value;
+                    }
+                    cell.replaceChild(span, input);
+                }
+            });
+            row.classList.remove('editable');
+            row.classList.add('locked-row');
+        }
+
+        function createEditableRow(colorType = 'normal') {
+            const row = document.createElement('tr');
+            row.classList.add('editable');
+            if (colorType === 'red-1') row.classList.add('red-text-1');
+            if (colorType === 'red-2') row.classList.add('red-text-2');
+
+            for (let i = 0; i < 4; i++) {
+                const cell = document.createElement('td');
+                const input = document.createElement('input');
+                if (i === 0) {
+                    input.type = 'text';
+                    input.placeholder = 'Product name';
+                } else {
+                    input.type = 'number';
+                    input.min = '0';
+                    input.step = 'any';
+                    input.placeholder = i === 1 ? '0' : '0.00';
+                }
+                cell.appendChild(input);
+                row.appendChild(cell);
+            }
+            addCalculationListeners(row);
+            return row;
+        }
+
+        function validateEditableRow(row) {
+            const inputs = row.querySelectorAll('input');
+            let valid = true;
+
+            const product = inputs[0];
+            if (product.value.trim() === '') {
+                valid = false;
+                product.style.border = '1px solid red';
+            } else {
+                product.style.border = '';
+            }
+
+            const qty = inputs[1];
+            const q = parseFloat(qty.value);
+            if (isNaN(q) || q <= 0) {
+                valid = false;
+                qty.style.border = '1px solid red';
+            } else {
+                qty.style.border = '';
+            }
+
+            const price = inputs[2];
+            const p = parseFloat(price.value);
+            if (isNaN(p) || p <= 0) {
+                valid = false;
+                price.style.border = '1px solid red';
+            } else {
+                price.style.border = '';
+            }
+
+            return valid;
+        }
+
+        function addNewRow(colorType = 'normal') {
+            const currentEditable = document.querySelector('tr.editable');
+            if (currentEditable) {
+                if (!validateEditableRow(currentEditable)) {
+                    errorDiv.textContent = 'Please fill all cells correctly. Product name, positive quantity and price required.';
+                    return;
+                }
+                lockRow(currentEditable);
+            }
+            errorDiv.textContent = '';
+            const newRow = createEditableRow(colorType);
+            tbody.appendChild(newRow);
+            newRow.querySelector('input').focus();
+        }
+
+        document.getElementById('add-dept-btn').addEventListener('click', () => addNewRow('red-2'));    // dark red
+        document.getElementById('add-credit-btn').addEventListener('click', () => addNewRow('red-1')); // light red
+        document.getElementById('add-income-btn').addEventListener('click', () => addNewRow('normal')); // normal
+    </script>
+</body>
+</html>

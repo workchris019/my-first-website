@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INGENZI-Ledger | Your Business Heartbeat</title>
+    <style>
+        /* --- CSS STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-image: radial-gradient(circle at center, #1a2e1f 0%, #0f1711 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #ffffff;
+            /* Update 'bgimg.PNG' to your actual file path */
+            background-image: url('bgimg.PNG'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+        }
+
+        /* Overlay to ensure text readability over background image */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        .signup-card {
+            position: relative;
+            z-index: 1;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            border: 1px solid #2d3f30;
+        }
+
+        .logo-area {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        h1 span {
+            color: #4ade80; /* Ingenzi Green */
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        /* Form Inputs */
+        .input-box {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            background-color: #252525;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #22c55e;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+        }
+
+        /* Submit Button */
+        .btn-create {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+        }
+
+        .btn-create:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-create:disabled {
+            background: #444;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .login-link {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .login-link a {
+            color: #4ade80;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-card">
+        <div class="logo-area">
+            <h1>INGENZI <span>Ledger</span></h1>
+            <p class="subtitle">Secure Registration for Traders in Rwanda</p>
+        </div>
+
+        <form id="registrationForm">
+            <div class="input-box">
+                <input type="number" id="natID" placeholder="National ID Number (11 Digits)" required>
+            </div>
+
+            <div class="input-box">
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="bizType" placeholder="Business Type (e.g. Boutique)" required>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="pin" placeholder="Create Secret PIN" required>
+            </div>
+
+            <button type="submit" class="btn-create" id="submitBtn">Create Account</button>
+        </form>
+
+        <div class="login-link">
+            All rights are reserved
+            <a href="FusionDev.html">FusionDev</a>
+            </div>
+        </body>
+</html>
